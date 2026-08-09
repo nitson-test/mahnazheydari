@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
+    />
+    <title>مطب مامایی مهناز حیدری</title>
+    <!-- فونت وزیر از CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Font Awesome برای آیکون‌ها -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Vazir", sans-serif;
+      }
+
+      body {
+        background: #f0f7ff;
+        color: #1a3a5c;
+        line-height: 1.8;
+      }
+
+      /* رنگ‌های اصلی: سفید و آبی (Blue #1e81b0, آبی روشن #d4edff) */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        background: linear-gradient(135deg, #ffffff 0%, #e6f2ff 100%);
+        box-shadow: 0 4px 20px rgba(30, 129, 176, 0.15);
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 2px solid #1e81b0;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo-icon {
+        width: 55px;
+        height: 55px;
+        background: #1e81b0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 28px;
+        box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1e81b0;
+        animation: pulse-logo 2s infinite;
+      }
+
+      @keyframes pulse-logo {
+        0% {
+          box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1e81b0;
+        }
+        50% {
+          box-shadow: 0 0 0 5px #fff, 0 0 0 10px #6bb4d6;
+        }
+        100% {
+          box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1e81b0;
+        }
+      }
+
+      .logo-text h1 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: #0b2b44;
+        letter-spacing: 1px;
+      }
+
+      .logo-text span {
+        display: block;
+        font-size: 0.9rem;
+        color: #1e81b0;
+        font-weight: 300;
+      }
+
+      nav a {
+        color: #1a3a5c;
+        text-decoration: none;
+        margin-right: 25px;
+        font-weight: 500;
+        transition: 0.3s;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 5px;
+      }
+
+      nav a:hover {
+        color: #1e81b0;
+        border-bottom-color: #1e81b0;
+      }
+
+      .btn-reserve-header {
+        background: #1e81b0;
+        color: #fff !important;
+        padding: 8px 22px;
+        border-radius: 50px;
+        border-bottom: none !important;
+        transition: 0.3s;
+        box-shadow: 0 4px 10px rgba(30, 129, 176, 0.3);
+      }
+
+      .btn-reserve-header:hover {
+        background: #14658a;
+        transform: scale(1.05);
+        color: #fff !important;
+      }
+
+      /* ===== SLIDER ===== */
+      .slider-section {
+        margin: 30px 0 50px;
+      }
+
+      .slider-container {
+        position: relative;
+        width: 100%;
+        height: 420px;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(30, 129, 176, 0.2);
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.2s ease-in-out;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        padding: 40px;
+        color: #fff;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .slide-content {
+        max-width: 600px;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(6px);
+        padding: 30px 40px;
+        border-radius: 24px;
+        border-right: 6px solid #1e81b0;
+      }
+
+      .slide-content h2 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .slide-content p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+      }
+
+      .slider-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        z-index: 10;
+      }
+
+      .slider-dots span {
+        width: 14px;
+        height: 14px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.3s;
+        border: 2px solid #fff;
+      }
+
+      .slider-dots span.active-dot {
+        background: #1e81b0;
+        transform: scale(1.3);
+        border-color: #fff;
+      }
+
+      /* ===== SERVICES ===== */
+      .section-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+      }
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        right: 0;
+        width: 60%;
+        height: 4px;
+        background: #1e81b0;
+        border-radius: 10px;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin: 40px 0;
+      }
+
+      .service-card {
+        background: #fff;
+        padding: 30px 20px;
+        border-radius: 28px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+        transition: 0.4s ease;
+        border: 1px solid rgba(30, 129, 176, 0.1);
+      }
+
+      .service-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(30, 129, 176, 0.15);
+        border-color: #1e81b0;
+      }
+
+      .service-card i {
+        font-size: 3.2rem;
+        color: #1e81b0;
+        background: #d4edff;
+        padding: 18px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+      }
+
+      .service-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+      }
+
+      /* ===== RESERVATION ===== */
+      .reserve-steps {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+        margin: 30px 0 50px;
+      }
+
+      .step {
+        background: #fff;
+        padding: 20px 30px;
+        border-radius: 60px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        border: 1px solid #d4edff;
+        font-weight: 500;
+      }
+
+      .step .num {
+        background: #1e81b0;
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+      }
+
+      .btn-reserve {
+        background: #1e81b0;
+        color: #fff;
+        border: none;
+        padding: 16px 50px;
+        border-radius: 60px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 8px 25px rgba(30, 129, 176, 0.3);
+        margin: 20px 0 40px;
+      }
+
+      .btn-reserve:hover {
+        background: #14658a;
+        transform: scale(1.04);
+        box-shadow: 0 12px 30px rgba(30, 129, 176, 0.5);
+      }
+
+      /* ===== ABOUT ===== */
+      .about-section {
+        background: linear-gradient(135deg, #ffffff, #e6f2ff);
+        padding: 50px 30px;
+        border-radius: 40px;
+        margin: 40px 0;
+        border-right: 8px solid #1e81b0;
+      }
+
+      .about-section p {
+        font-size: 1.1rem;
+        max-width: 800px;
+      }
+
+      /* ===== PAYMENT MODAL (صفحه جدا) ===== */
+      .payment-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .payment-modal {
+        background: #fff;
+        max-width: 500px;
+        width: 92%;
+        padding: 40px 30px;
+        border-radius: 40px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        position: relative;
+        animation: slideUp 0.5s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(80px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .payment-modal h2 {
+        color: #1a3a5c;
+        margin-bottom: 8px;
+      }
+
+      .payment-modal p {
+        color: #555;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #1a3a5c;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid #d4edff;
+        border-radius: 30px;
+        font-size: 1rem;
+        transition: 0.3s;
+        background: #f9fcff;
+      }
+
+      .form-group input:focus {
+        border-color: #1e81b0;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(30, 129, 176, 0.15);
+      }
+
+      .btn-pay {
+        width: 100%;
+        background: #1e81b0;
+        color: #fff;
+        border: none;
+        padding: 15px;
+        border-radius: 60px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        margin: 10px 0 20px;
+      }
+
+      .btn-pay:hover {
+        background: #14658a;
+      }
+
+      .btn-close-payment {
+        background: transparent;
+        border: 2px solid #1e81b0;
+        color: #1e81b0;
+        padding: 10px 25px;
+        border-radius: 60px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 100%;
+      }
+
+      .btn-close-payment:hover {
+        background: #1e81b0;
+        color: #fff;
+      }
+
+      .payment-modal .back-icon {
+        position: absolute;
+        top: 18px;
+        left: 20px;
+        font-size: 1.5rem;
+        color: #1e81b0;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .payment-modal .back-icon:hover {
+        transform: scale(1.2);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: #0b2b44;
+        color: #d4edff;
+        padding: 30px 0;
+        margin-top: 50px;
+        text-align: center;
+        border-radius: 40px 40px 0 0;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+        }
+        nav a {
+          margin: 0 10px;
+          font-size: 0.9rem;
+        }
+        .slider-container {
+          height: 300px;
+        }
+        .slide-content {
+          padding: 20px;
+        }
+        .slide-content h2 {
+          font-size: 1.6rem;
+        }
+        .logo-text h1 {
+          font-size: 1.3rem;
+        }
+        .services-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .reserve-steps {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .step {
+          border-radius: 30px;
+          justify-content: center;
+        }
+        .payment-modal {
+          padding: 30px 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .slider-container {
+          height: 250px;
+        }
+        .slide-content h2 {
+          font-size: 1.3rem;
+        }
+        .btn-reserve {
+          padding: 14px 30px;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== HEADER ========== -->
+    <header>
+      <div class="container header-content">
+        <div class="logo-area">
+          <div class="logo-icon">
+            <i class="fas fa-baby"></i>
+          </div>
+          <div class="logo-text">
+            <h1>مطب مامایی مهناز حیدری</h1>
+            <span>مراقبت از مادر و کودک</span>
+          </div>
+        </div>
+        <nav>
+          <a href="#services">خدمات</a>
+          <a href="#reserve">رزرو</a>
+          <a href="#about">درباره ما</a>
+          <a href="#" class="btn-reserve-header" id="openPaymentBtn"
+            ><i class="fas fa-calendar-check"></i> نوبت دهی</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- ========== SLIDER ========== -->
+      <section class="slider-section">
+        <div class="slider-container" id="slider">
+          <!-- اسلاید 1 -->
+          <div
+            class="slide active"
+            style="
+              background-image: linear-gradient(135deg, #1e81b0dd, #0b2b44dd),
+                url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%231e81b0\'/%3E%3Ccircle cx=\'100\' cy=\'100\' r=\'50\' fill=\'%23ffffff30\'/%3E%3Ccircle cx=\'300\' cy=\'200\' r=\'70\' fill=\'%23ffffff20\'/%3E%3C/svg%3E');
+            "
+          >
+            <div class="slide-content">
+              <h2>🌿 دوران طلایی بارداری</h2>
+              <p>مراقبت‌های تخصصی از مادر و جنین با جدیدترین متدهای روز دنیا</p>
+            </div>
+          </div>
+          <!-- اسلاید 2 -->
+          <div
+            class="slide"
+            style="
+              background-image: linear-gradient(135deg, #14658add, #0b2b44dd),
+                url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%2314658a\'/%3E%3Ccircle cx=\'200\' cy=\'150\' r=\'80\' fill=\'%23ffffff20\'/%3E%3C/svg%3E');
+            "
+          >
+            <div class="slide-content">
+              <h2>🤱 مشاوره شیردهی</h2>
+              <p>پشتیبانی کامل در مسیر شیردهی موفق و آرامش مادر و نوزاد</p>
+            </div>
+          </div>
+          <!-- اسلاید 3 -->
+          <div
+            class="slide"
+            style="
+              background-image: linear-gradient(135deg, #0b2b44dd, #1e81b0dd),
+                url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%230b2b44\'/%3E%3Ccircle cx=\'120\' cy=\'180\' r=\'60\' fill=\'%23ffffff20\'/%3E%3C/svg%3E');
+            "
+          >
+            <div class="slide-content">
+              <h2>🧘 بهداشت و سلامت زنان</h2>
+              <p>معاینات دوره‌ای، تست‌های غربالگری و خدمات پیشگیرانه</p>
+            </div>
+          </div>
+          <!-- دات‌های اسلایدر -->
+          <div class="slider-dots">
+            <span class="active-dot" data-index="0"></span>
+            <span data-index="1"></span>
+            <span data-index="2"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SERVICES ========== -->
+      <section id="services">
+        <h2 class="section-title">خدمات تخصصی</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <i class="fas fa-fetus"></i>
+            <h3>مراقبت بارداری</h3>
+            <p>ویزیت‌های دوره‌ای، سونوگرافی و مشاوره تغذیه</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-baby-carriage"></i>
+            <h3>زایمان طبیعی</h3>
+            <p>آمادگی برای زایمان بی‌درد و فیزیولوژیک</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-hand-holding-heart"></i>
+            <h3>مشاوره شیردهی</h3>
+            <p>راهکارهای عملی برای شیردهی آسان و بدون استرس</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-notes-medical"></i>
+            <h3>بهداشت زنان</h3>
+            <p>معاینات سالانه، پیشگیری و درمان عفونت‌ها</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== RESERVATION ========== -->
+      <section id="reserve">
+        <h2 class="section-title">نحوه رزرو نوبت</h2>
+        <div class="reserve-steps">
+          <div class="step"><span class="num">۱</span> ثبت نام ساده</div>
+          <div class="step"><span class="num">۲</span> انتخاب تاریخ و ساعت</div>
+          <div class="step"><span class="num">۳</span> پرداخت آنلاین</div>
+          <div class="step"><span class="num">۴</span> دریافت تاییدیه</div>
+        </div>
+        <div style="text-align: center">
+          <button class="btn-reserve" id="openPaymentBtn2">
+            <i class="fas fa-credit-card"></i> رزرو نوبت
+          </button>
+        </div>
+      </section>
+
+      <!-- ========== ABOUT ========== -->
+      <section id="about" class="about-section">
+        <h2 class="section-title">درباره ما</h2>
+        <p style="margin-top: 20px">
+          <strong>مطب مامایی مهناز حیدری</strong> با بیش از ۱۲ سال تجربه در حوزه
+          سلامت مادر و کودک، با به‌کارگیری جدیدترین روش‌های علمی و رویکردی
+          انسان‌محور، همراه شما در مسیر شیرین مادر شدن هستیم. ارائه خدمات با
+          کیفیت، محیطی آرام و امن، و تعهد به سلامت شما، افتخار ماست.
+        </p>
+        <p style="margin-top: 10px; color: #1e81b0">
+          <i class="fas fa-phone-alt"></i> ۰۲۱-۱۲۳۴۵۶۷۸ &nbsp;|&nbsp;
+          <i class="fas fa-location-dot"></i> تهران، خیابان ولیعصر، خیابان فلان،
+          پلاک ۱۲
+        </p>
+      </section>
+    </main>
+
+    <!-- ========== PAYMENT OVERLAY (صفحه پرداخت جدا) ========== -->
+    <div class="payment-overlay" id="paymentOverlay">
+      <div class="payment-modal">
+        <!-- دکمه برگشت -->
+        <div class="back-icon" id="closePaymentBtn">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <h2>💳 درگاه پرداخت</h2>
+        <p>لطفاً برای تکمیل رزرو، ابتدا ثبت‌نام کنید.</p>
+
+        <form id="paymentForm">
+          <div class="form-group">
+            <label>نام و نام خانوادگی</label>
+            <input type="text" placeholder="مثلاً مهناز حیدری" required />
+          </div>
+          <div class="form-group">
+            <label>شماره موبایل</label>
+            <input type="tel" placeholder="۰۹۱۲۳۴۵۶۷۸۹" required />
+          </div>
+          <div class="form-group">
+            <label>کد ملی</label>
+            <input type="text" placeholder="۱۲۳۴۵۶۷۸۹۰" required />
+          </div>
+          <button type="submit" class="btn-pay">پرداخت و ثبت نوبت</button>
+        </form>
+
+        <button class="btn-close-payment" id="closePaymentBtn2">
+          بازگشت به صفحه اصلی
+        </button>
+        <p style="font-size: 0.8rem; color: #999; margin-top: 15px">
+          اطلاعات شما نزد ما محفوظ است.
+        </p>
+      </div>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+      <div class="container">
+        <p>© ۱۴۰۵ - تمامی حقوق برای مطب مامایی مهناز حیدری محفوظ است.</p>
+        <p style="font-size: 0.9rem; opacity: 0.7">
+          طراحی شده با عشق و تعهد به سلامت مادر و کودک
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // ============================
+      //  اسلایدر سینماتیک (محو شدن)
+      // ============================
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".slider-dots span");
+      let currentSlide = 0;
+      let slideInterval;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle("active", i === index);
+        });
+        dots.forEach((d, i) => {
+          d.classList.toggle("active-dot", i === index);
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      function startSlider() {
+        slideInterval = setInterval(nextSlide, 4000);
+      }
+
+      function resetSlider() {
+        clearInterval(slideInterval);
+        startSlider();
+      }
+
+      // کلیک روی دات‌ها
+      dots.forEach((dot) => {
+        dot.addEventListener("click", function () {
+          const index = parseInt(this.dataset.index);
+          currentSlide = index;
+          showSlide(currentSlide);
+          resetSlider();
+        });
+      });
+
+      // شروع اسلایدر
+      startSlider();
+
+      // ============================
+      //  باز و بسته کردن صفحه پرداخت
+      // ============================
+      const overlay = document.getElementById("paymentOverlay");
+      const openBtns = document.querySelectorAll(
+        "#openPaymentBtn, #openPaymentBtn2"
+      );
+      const closeBtns = document.querySelectorAll(
+        "#closePaymentBtn, #closePaymentBtn2"
+      );
+
+      function openPayment() {
+        overlay.style.display = "flex";
+        document.body.style.overflow = "hidden"; // جلوگیری از اسکرول پشت
+      }
+
+      function closePayment() {
+        overlay.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      openBtns.forEach((btn) =>
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          openPayment();
+        })
+      );
+
+      closeBtns.forEach((btn) => btn.addEventListener("click", closePayment));
+
+      // کلیک روی پس‌زمینه هم ببندد
+      overlay.addEventListener("click", function (e) {
+        if (e.target === this) closePayment();
+      });
+
+      // ============================
+      //  فرم پرداخت (نمایش پیام)
+      // ============================
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert(
+            "✅ درخواست نوبت شما با موفقیت ثبت شد! پس از پرداخت، پیامک تایید ارسال می‌شود."
+          );
+          closePayment();
+          this.reset();
+        });
+
+      // ============================
+      //  اسکرول نرم برای منو
+      // ============================
+      document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+          e.preventDefault();
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
